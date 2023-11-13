@@ -1,6 +1,7 @@
-# Azure AI services Quick Start Accelerator 🚀
-
+# Azure AI services Quick Start Accelerator <img src="./utils/images/azure_logo.png" alt="Azure Logo" style="width:30px;height:30px;"/>
 Welcome to the Azure AI Quick Start Accelerator! This repository is designed as a rapid launchpad for your complex AI systems projects, harnessing the power of Azure AI services. Tailored for both enterprise and academic environments, this accelerator integrates best practices to ensure a seamless development journey from start to finish.
+
+
 
 ## 🌟 Goal
 The primary goal of this Accelerator is to provide a quick start for developing and deploying complex AI solutions using Azure AI services. It acts as a comprehensive guide for both novices and seasoned professionals, enabling the efficient establishment, deployment, and management of sophisticated AI systems.
