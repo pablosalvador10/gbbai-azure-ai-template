@@ -1,0 +1,13 @@
+  name: AdaBoostClassifier_simple
+  model_type: AdaBoostClassifier
+  hyperparameters:
+    base_estimator:
+      name: DecisionTreeClassifier
+      parameters:
+        max_depth: 5
+        max_leaf_nodes: 9
+        min_impurity_decrease: 0.001
+        min_samples_leaf: 10
+        random_state: 1
+    learning_rate: 0.01
+    n_estimators: 86

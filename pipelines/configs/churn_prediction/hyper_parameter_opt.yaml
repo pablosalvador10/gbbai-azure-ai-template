@@ -1,0 +1,15 @@
+models:
+  AdaBoost_upsampling:
+    model_type: AdaBoostClassifier
+    estimator_split:
+      train_scoring_split: 0.3
+    estimator_upsampling:
+      strategy: 1
+      k_neighbors: 5
+    estimator_parameters_opt:
+      scorer: "Recall"
+      n_jobs: -1
+      n_iter_search: 2
+      apply_pca: False
+      parameters: # utils.py parameters_train_ada_boost_upsampling you could use ${python_objects:parameters}
+                  # but needs extra logic

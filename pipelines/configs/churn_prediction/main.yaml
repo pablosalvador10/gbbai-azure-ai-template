@@ -1,0 +1,25 @@
+# defaults:  # Defines the list of configs this config is extending or overriding
+#   - _self_
+#   - override hydra/hydra_logging: disabled  # Disabling Hydra's default logging
+#   - override hydra/job_logging: disabled  # Disabling Hydra's job logging
+
+# hydra:  # Hydra specific configurations
+#   output_subdir: null
+#   run:
+#     dir: .
+
+pipeline_settings:
+  date: "14_10_2023"
+  target_column: "Attrition_Flag"
+
+fe_pipeline_settings:
+  input_path: "/Users/salv91/Desktop/open-source/ml-project-template/utils/data/BankChurners.csv"
+  output_path: "/Users/salv91/Desktop/open-source/ml-project-template/pipelines/registries/feature_store/${pipeline_settings.date}/feature_dataset.csv"
+
+training_pipeline_settings:
+  features_path: "/Users/salv91/Desktop/open-source/ml-project-template/pipelines/registries/feature_store/${pipeline_settings.date}/feature_dataset.csv"
+  output_directory: "/Users/salv91/Desktop/open-source/ml-project-template/pipelines/registries/feature_store/${pipeline_settings.date}/training/"
+  features_split_directory: "/Users/salv91/Desktop/open-source/ml-project-template/pipelines/registries/feature_store/${pipeline_settings.date}/training/"
+  output_models_directory: "/Users/salv91/Desktop/open-source/ml-project-template/pipelines/registries/model_registry/${pipeline_settings.date}/training/"
+  model_definition_yaml: "pipelines/configs/churn_prediction/reffited_model.yaml"
+  hyper_parameter_optimization: ${hyper_parameter_file}
