@@ -40,7 +40,7 @@ check_code_quality:
 	bandit -c pyproject.toml -r .
 
 fix_code_quality:
-	# Automatic fixes for code quality
+	# Automatic fixes for code quality (not doing in production only dev cycles)
 	black .
 	isort .
 	ruff --fix .

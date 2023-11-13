@@ -34,22 +34,22 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Run isort 🧹
+      - name: Run isort Check 🧹
         run: isort --check-only --profile black .
 
-      - name: Run Black 🌚
+      - name: Run Black Check 🌚
         run: black --check .
 
       - name: Run flake8 ✅
         run: flake8 . --max-line-length=124
 
-      - name: Run ruff 🧼
+      - name: Run ruff Check 🧼
         run: ruff --fix --exit-non-zero-on-fix .
 
-      - name: Run interrogate 🔍
+      - name: Run interrogate Check 🔍
         run: interrogate src -v -i --fail-under=60 -e '**/__init__.py'
 
-      - name: Bandit Security Linter 🔒
+      - name: Bandit Security Linter Check 🔒
         run: bandit -c pyproject.toml -r .
 
       - name: Run Pytest 🧪
