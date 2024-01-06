@@ -52,8 +52,6 @@ run_unit_tests:
 check_and_fix_code_quality: fix_code_quality check_code_quality
 check_and_fix_test_quality: run_unit_tests
 
-# Targets for various operations and tests
-
 # Colored text
 RED = \033[0;31m
 NC = \033[0m # No Color
@@ -64,36 +62,17 @@ define log_section
 	@printf "\n${GREEN}--> $(1)${NC}\n\n"
 endef
 
-INPUT_PATH= "/Users/salv91/Desktop/open-source/ml-project-template/utils/data/BankChurners.csv"
-OUTPUT_DIRECTORY= "/Users/salv91/Desktop/open-source/ml-project-template/notebooks/dev/test"
+create_conda_env:
+	@echo "Creating conda environment"
+	conda env create -f environment.yaml
 
-## run with Omegaconf + Click
+activate_conda_env:
+	@echo "Creating conda environment"
+	conda activate $(CONDA_ENV)
 
-test_fe_passing_args:
-	$(call log_section,Running feature engineering with specified arguments)
-	$(PYTHON_INTERPRETER) $(PWD)/pipelines/feature_engineering/components.py run-feature-engineering --input_path $(INPUT_PATH) --output_directory $(OUTPUT_DIRECTORY)
-
-test_fe_no_passing_args:
-	$(call log_section,Running feature engineering with default arguments)
-	$(PYTHON_INTERPRETER) $(PWD)/pipelines/feature_engineering/components.py run-feature-engineering
-
-test_training_data_prep_args:
-	$(call log_section,Preparing training data with specified estimator and sampling techniques)
-	$(PYTHON_INTERPRETER) $(PWD)/pipelines/training/components.py run-training-data-prep --estimator "AdaBoostClassifier" --perform-sampling-techniques "upsampling"
-
-test_training:
-	$(call log_section,Training model with specified estimator)
-	$(PYTHON_INTERPRETER) $(PWD)/pipelines/training/components.py run-training --estimator "AdaBoost_upsampling"
-
-# Target for running refitting with Hydra
-test_reffiting_hydra:
-	$(call log_section,Running model refitting using Hydra with specified date)
-	$(PYTHON_INTERPRETER) $(PWD)/pipelines/training/components_hydra.py pipeline_settings.date="'14_10_2023'"
-
-test_reffiting_hydra_multirun:
-	$(call log_section,Running model refitting using Hydra with specified date)
-	$(PYTHON_INTERPRETER) $(PWD)/pipelines/training/components_hydra.py --multirun pipeline_settings.date="'14_10_2023'","'14_12_2023'"
-
+remove_conda_env:
+	@echo "Removing conda environment"
+	conda env remove --name $(CONDA_ENV)
 
 run_pylint:
 	@echo "Running linter"
